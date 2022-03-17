@@ -1,5 +1,5 @@
 const { Schema, model } = require('mongoose');
-const reactionSchema = require('./Reaction')
+const {Reaction, reactionSchema} = require('./Reaction')
 // Schema to create Student model
 const thoughtSchema = new Schema(
   {
@@ -14,14 +14,14 @@ const thoughtSchema = new Schema(
         default: Date.now(),
         get:(date) => new Date(date).toLocaleDateString(),
       },
-      username:
-          {
-            type: String,
-            required: true,
-          },
       reactions:[
        reactionSchema
-      ]
+      ],
+      user_id: 
+       {
+        type:Schema.Types.ObjectId,
+        ref: "user"
+    }
     
   },
   {

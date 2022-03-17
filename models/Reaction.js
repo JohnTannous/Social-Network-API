@@ -13,11 +13,11 @@ const reactionSchema = new Schema(
           min_length: 1,
           max_length: 280,
       },
-      username:
-          {
-            type: String,
-            required: true,
-          },
+      user_id: 
+      {
+       type:Schema.Types.ObjectId,
+       ref: "user"
+   },
 
        createdAt:{
             type: Date,
@@ -33,6 +33,6 @@ const reactionSchema = new Schema(
   }
 );
 
-// const Reaction = model('reaction', reactionSchema);
+const Reaction = model('reaction', reactionSchema);
 
-module.exports = reactionSchema;
+module.exports = {Reaction, reactionSchema};
